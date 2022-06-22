@@ -7,10 +7,14 @@ class ApplicationController < Sinatra::Base
     coffee.to_json
   end
 
-  delete '/coffees/:id' do
+  patch '/coffees/:id' do
     coffee = Coffee.find(params[:id])
-    coffee.destroy
+    coffee.update(stock: params[:stock])
     coffee.to_json
+  end
+
+  delete '/coffee:id' do
+    
   end
 
 end
