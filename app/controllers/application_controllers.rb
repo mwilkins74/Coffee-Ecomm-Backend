@@ -7,6 +7,14 @@ class ApplicationController < Sinatra::Base
     coffee.to_json
   end
 
+  post '/customers' do
+    customer = Customer.create(
+      name: params[:name],
+      email: params[:email],
+    )
+    customer.to_json
+  end
+
   patch '/coffees/:id' do
     coffee = Coffee.find(params[:id])
     coffee.update(stock: params[:stock])
